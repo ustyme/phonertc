@@ -27,7 +27,11 @@ Unable to find a suitable version for angular-ui-router, please choose one:
     2) angular-ui-router#~0.2.11 which resolved to 0.2.13 and is required by PhoneRTCDemoPrefix the choice with ! to persist it to bower.json
 
 # Install client plugins
-    cordova plugin add org.apache.cordova.device ; cordova plugin add org.apache.cordova.console ; cordova plugin add https://github.com/alongubkin/phonertc.git
+    cordova plugin add org.apache.cordova.device
+    
+    cordova plugin add org.apache.cordova.console
+    
+    cordova plugin add https://github.com/alongubkin/phonertc.git
 
 # Add client platforms
     cordova platform add browser
@@ -36,7 +40,11 @@ Unable to find a suitable version for angular-ui-router, please choose one:
     grunt build —force
 
 # Run clients
-    cd ~/github/ustyme/phonertc/demo/client-cordova ; cordova run browser ; cordova run browser
+    cd ~/github/ustyme/phonertc/demo/client-cordova
+    
+    cordova run browser
+    
+    cordova run browser
 
 # ----------------Important Notes-------------------
 # the signaling server details for the client are stored in: ~/github/ustyme/phonertc/demo/client-cordova/app/scripts/signaling.js
