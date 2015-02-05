@@ -1,6 +1,5 @@
 # Clone the Repo
     cd ~/github/ustyme
-
     git clone git@github.com:ustyme/phonertc.git
 
 # Start the signaling server
@@ -25,9 +24,7 @@ Unable to find a suitable version for angular-ui-router, please choose one:
 
 # Install client plugins
     cordova plugin add org.apache.cordova.device
-    
     cordova plugin add org.apache.cordova.console
-    
     cordova plugin add https://github.com/alongubkin/phonertc.git
 
 # Add client platforms
@@ -38,9 +35,7 @@ Unable to find a suitable version for angular-ui-router, please choose one:
 
 # Run clients
     cd ~/github/ustyme/phonertc/demo/client-cordova
-    
     cordova run browser
-    
     cordova run browser
 
 # ----------------Important Notes-------------------
