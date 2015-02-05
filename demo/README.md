@@ -11,11 +11,8 @@
 
 # Create the client-cordova project and copy the client code to it
     cd ~/github/ustyme/phonertc/demo
-
     cordova create client-cordova com.ustyme ClientCordova
-
     cp -r client/ client-cordova/
-
     cd client-cordova/
 
 # Install client dependencies
@@ -37,7 +34,7 @@ Unable to find a suitable version for angular-ui-router, please choose one:
     cordova platform add browser
 
 # Build client
-    grunt build —force
+    grunt build --force
 
 # Run clients
     cd ~/github/ustyme/phonertc/demo/client-cordova
