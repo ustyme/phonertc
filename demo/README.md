@@ -20,7 +20,8 @@
 
 # Install client dependencies
     npm install
-    bower install - if you get the following question, answer 1. If you don't get the question, you may have to run npm -g uninstall bower ; npm -g install bower
+    bower install
+if you get the following question, answer 1. If you don't get the question, you may have to run npm -g uninstall bower ; npm -g install bower
 Unable to find a suitable version for angular-ui-router, please choose one:
     1) angular-ui-router#0.2.10 which resolved to 0.2.10 and is required by ionic#1.0.0-beta.12 
     2) angular-ui-router#~0.2.11 which resolved to 0.2.13 and is required by PhoneRTCDemoPrefix the choice with ! to persist it to bower.json
