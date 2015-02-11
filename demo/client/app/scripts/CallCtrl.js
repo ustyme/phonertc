@@ -23,7 +23,7 @@ angular.module('phonertcdemo')
     function call(isInitiator, contactName) {
       console.log(new Date().toString() + ': calling to ' + contactName + ', isInitiator: ' + isInitiator);
 
-      var config = { 
+      var config = {
         isInitiator: isInitiator,
         turn: { host: 'turn:ec2-54-146-132-244.compute-1.amazonaws.com:3478', username: 'masala', password: '!R6oLQKl5s4c' },
         streams: {
@@ -33,9 +33,9 @@ angular.module('phonertcdemo')
       };
 
       var session = new cordova.plugins.phonertc.Session(config);
-      
-      session.on('sendMessage', function (data) { 
-        signaling.emit('sendMessage', contactName, { 
+
+      session.on('sendMessage', function (data) {
+        signaling.emit('sendMessage', contactName, {
           type: 'phonertc_handshake',
           data: JSON.stringify(data)
         });
@@ -58,7 +58,7 @@ angular.module('phonertcdemo')
 
       session.call();
 
-      $scope.contacts[contactName] = session; 
+      $scope.contacts[contactName] = session;
     }
 
     if ($scope.isCalling) {
@@ -67,7 +67,7 @@ angular.module('phonertcdemo')
 
     $scope.ignore = function () {
       var contactNames = Object.keys($scope.contacts);
-      if (contactNames.length > 0) { 
+      if (contactNames.length > 0) {
         $scope.contacts[contactNames[0]].disconnect();
       } else {
         signaling.emit('sendMessage', $stateParams.contactName, { type: 'ignore' });
@@ -107,7 +107,7 @@ angular.module('phonertcdemo')
 
     $scope.closeSelectContactModal = function () {
       cordova.plugins.phonertc.showVideoView();
-      $scope.selectContactModal.hide();      
+      $scope.selectContactModal.hide();
     };
 
     $scope.addContact = function (newContact) {
@@ -156,7 +156,7 @@ angular.module('phonertcdemo')
 
         case 'ignore':
           var len = Object.keys($scope.contacts).length;
-          if (len > 0) { 
+          if (len > 0) {
             if ($scope.contacts[name]) {
               $scope.contacts[name].close();
               delete $scope.contacts[name];
@@ -178,10 +178,12 @@ angular.module('phonertcdemo')
 
         case 'phonertc_handshake':
           if (duplicateMessages.indexOf(message.data) === -1) {
+            console.log('phonertc_handshake');
+            console.log('message: ', message );
             $scope.contacts[name].receiveMessage(JSON.parse(message.data));
             duplicateMessages.push(message.data);
           }
-          
+
           break;
 
         case 'add_to_group':
@@ -191,7 +193,7 @@ angular.module('phonertcdemo')
 
             if (!message.isInitiator) {
               $timeout(function () {
-                signaling.emit('sendMessage', contact, { 
+                signaling.emit('sendMessage', contact, {
                   type: 'add_to_group',
                   contacts: [ContactsService.currentName],
                   isInitiator: true
@@ -201,12 +203,12 @@ angular.module('phonertcdemo')
           });
 
           break;
-      } 
+      }
     }
 
     signaling.on('messageReceived', onMessageReceive);
 
-    $scope.$on('$destroy', function() { 
+    $scope.$on('$destroy', function() {
       signaling.removeListener('messageReceived', onMessageReceive);
     });
   });
